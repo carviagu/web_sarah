@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>terminal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="window">
+    <div class="titlebar">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span class="title">visitante@web: ~</span>
+    </div>
+    <main id="terminal" class="terminal">
+      <div id="output"></div>
+      <form id="form" class="line" autocomplete="off">
+        <label for="input" class="prompt">visitante@web:~$</label>
+        <input id="input" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" autofocus>
+      </form>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
