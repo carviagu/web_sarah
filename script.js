@@ -20,17 +20,17 @@ const USERNAME = "Sarita";
 // (también con el comando "mensajes")
 const MESSAGES = [
   { text: "21 de junio... Primera Conversación", cls: "" },
-  { text: "10 de julio... Primera Cita", cls: "accent" },
+  { text: "10 de julio... Primera Cita", cls: "special" },
   { text: "...", cls: "" },
-  { text: "31 de julio... Bolos... y Primer Beso", cls: "accent" },
+  { text: "31 de julio... Bolos... y Primer Beso", cls: "special" },
   { text: "...", cls: "" },
   { text: "8 de septiembre... Retiro y Agosto superado", cls: "" },
   { text: "...", cls: "" },
-  { text: "12 de octubre... Novios", cls: "accent" },
+  { text: "12 de octubre... Novios", cls: "special" },
   { text: "...", cls: "" },
   { text: "7 de noviembre... Reto Burgos", cls: "" },
   { text: "12 de noviembre...", cls: ""},
-  { text: "¡LOGRO DESBLOQUEADO!", cls: "accent"},
+  { text: "¡LOGRO DESBLOQUEADO!", cls: "special"},
 ];
 
 // Foto que se muestra al pulsar el botón final.
