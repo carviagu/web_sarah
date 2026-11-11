@@ -4,7 +4,9 @@
   --dim: #1fa84a;
   --accent: #ffd166;
   --error: #ff5f56;
-  --special: #66CDAA;
+  --blue: #66CDAA;
+  --pink: #ff9ccf;
+  --pink-strong: #ff4fa3;
   --font: "Fira Code", "Cascadia Code", Consolas, Menlo, monospace;
 }
 
@@ -142,8 +144,8 @@ body {
 /* botón y foto dentro de la terminal */
 .term-btn {
   background: transparent;
-  color: var(--accent);
-  border: 1px solid var(--accent);
+  color: var(--blue);
+  border: 1px solid var(--blue);
   padding: 6px 14px;
   font: inherit;
   text-shadow: inherit;
@@ -180,11 +182,31 @@ body {
 .row.dim { color: var(--dim); }
 .row.accent { color: var(--accent); }
 .row.error { color: var(--error); }
+.rom.blue {color: var(--blue); }
+.rom.pink {color: var(--pink-strong); }
 
 .line {
   display: flex;
   gap: 8px;
   margin: 0;
+}
+
+/* círculo de carga mientras se muestran los mensajes */
+.spinner {
+  width: 22px;
+  height: 22px;
+  margin: 8px 0;
+  border: 3px solid rgba(77, 184, 255, 0.2);
+  border-top-color: var(--fg);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(77, 184, 255, 0.35);
+  animation: spin 0.8s linear infinite;
+}
+ 
+.spinner[hidden] { display: none; }
+ 
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .prompt {

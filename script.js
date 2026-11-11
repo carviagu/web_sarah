@@ -19,19 +19,19 @@ const USERNAME = "Sarita";
 // Mensajes que se muestran uno a uno tras iniciar sesión
 // (también con el comando "mensajes")
 const MESSAGES = [
-  { text: "21 de junio... Primera Conversación", cls: "" },
-  { text: "10 de julio... Primera Cita", cls: "special" },
+  { text: "21 de junio '26... Primera Conversación", cls: "" },
+  { text: "10 de julio '26... Primera Cita", cls: "blue" },
   { text: "...", cls: "" },
-  { text: "31 de julio... Bolos... y Primer Beso", cls: "special" },
+  { text: "31 de julio '26... Bolos... y Primer Beso", cls: "blue" },
   { text: "...", cls: "" },
-  { text: "8 de septiembre... Retiro y Agosto superado", cls: "" },
+  { text: "8 de septiembre '26... Primera Cita después de Verano", cls: "" },
   { text: "...", cls: "" },
-  { text: "12 de octubre... Novios", cls: "special" },
+  { text: "12 de octubre '26... Novios", cls: "blue" },
   { text: "...", cls: "" },
-  { text: "7 de noviembre... Reto Burgos", cls: "" },
-  { text: "12 de noviembre...", cls: ""},
-  { text: "¡LOGRO DESBLOQUEADO!", cls: "special"},
-];
+  { text: "7 de noviembre '26... Reto Burgos", cls: "" },
+  { text: "12 de noviembre '26...", cls: ""},
+  { text: "¡LOGRO DESBLOQUEADO!", cls: "pink"},
+]
 
 // Foto que se muestra al pulsar el botón final.
 // Sube la imagen al repositorio junto a index.html y pon aquí su nombre.
@@ -40,7 +40,7 @@ const PHOTO_BUTTON_TEXT = "[ Ver Logro ]";
 const PHOTO_HIDE_TEXT = "[ Ocultar Logro ]";
 
 // Tiempo entre un mensaje y el siguiente (ms)
-const MESSAGE_DELAY = 2500;
+const MESSAGE_DELAY = 1000;
 
 // Velocidad de escritura (ms por línea en el arranque)
 const LINE_DELAY = 350;
@@ -88,6 +88,23 @@ let busy = true;
 let mode = "login"; // "login" | "shell"
 let promptText = USERNAME.toLowerCase() + "@sarahos:~$";
 const promptLabel = document.querySelector(".prompt");
+
+// Círculo de carga: se muestra mientras la terminal está ocupada
+const spinner = document.createElement("div");
+spinner.className = "spinner";
+spinner.setAttribute("role", "status");
+spinner.setAttribute("aria-label", "Cargando");
+terminal.insertBefore(spinner, form);
+ 
+function setBusy(value) {
+  busy = value;
+  spinner.hidden = !value;
+  form.hidden = value;
+  terminal.scrollTop = terminal.scrollHeight;
+  if (!value) input.focus();
+}
+ 
+setBusy(true);
 
 function print(line) {
   const item = typeof line === "string" ? { text: line, cls: "" } : line;
@@ -177,7 +194,7 @@ async function boot() {
     await sleep(LINE_DELAY);
   }
   promptLabel.textContent = "Usuario:";
-  busy = false;
+  setBusy(false);
   input.focus();
 }
 
@@ -189,7 +206,8 @@ async function login(value) {
     return;
   }
 
-  busy = true;
+  promptLabel.textContent = "";
+  setBusy(true);
   print({ text: "Acceso concedido. Bienvenida, " + USERNAME + ".", cls: "accent" });
   await sleep(MESSAGE_DELAY / 2);
   print("");
@@ -207,7 +225,7 @@ async function login(value) {
 
   mode = "shell";
   promptLabel.textContent = promptText;
-  busy = false;
+  setBusy(false);
   input.focus();
 }
 
