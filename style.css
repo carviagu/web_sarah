@@ -71,6 +71,60 @@ body {
   font-size: 13px;
 }
 
+/* pantalla de carga */
+.loader {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px;
+  color: var(--fg);
+  text-shadow: 0 0 6px rgba(51, 255, 102, 0.45);
+}
+
+.loader[hidden] { display: none; }
+
+.loader-text {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.dots::after {
+  content: "";
+  animation: dots 1.2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%   { content: ""; }
+  25%  { content: "."; }
+  50%  { content: ".."; }
+  75%  { content: "..."; }
+}
+
+.bar {
+  width: min(420px, 80%);
+  height: 18px;
+  border: 1px solid var(--fg);
+  padding: 2px;
+  box-shadow: 0 0 12px rgba(51, 255, 102, 0.25);
+}
+
+.bar-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--fg);
+  box-shadow: 0 0 10px rgba(51, 255, 102, 0.6);
+}
+
+.loader-percent {
+  margin: 0;
+  font-size: 13px;
+  color: var(--dim);
+}
+
 .terminal {
   flex: 1;
   overflow-y: auto;
@@ -80,6 +134,37 @@ body {
   line-height: 1.5;
   text-shadow: 0 0 6px rgba(51, 255, 102, 0.45);
   cursor: text;
+}
+
+.terminal[hidden] { display: none; }
+
+/* botón y foto dentro de la terminal */
+.term-btn {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 6px 14px;
+  font: inherit;
+  text-shadow: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.term-btn:hover,
+.term-btn:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+  text-shadow: none;
+  outline: none;
+}
+
+.photo {
+  display: block;
+  max-width: 100%;
+  max-height: 60vh;
+  margin-top: 12px;
+  border: 1px solid var(--fg);
+  box-shadow: 0 0 14px rgba(51, 255, 102, 0.3);
 }
 
 .terminal::-webkit-scrollbar { width: 8px; }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>terminal</title>
+  <title>SarahOS</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,12 +12,19 @@
       <span class="dot red"></span>
       <span class="dot yellow"></span>
       <span class="dot green"></span>
-      <span class="title">visitante@web: ~</span>
+      <span class="title">visitante@sarahos: ~</span>
     </div>
-    <main id="terminal" class="terminal">
+    <div id="loader" class="loader">
+      <p class="loader-text">Iniciando SarahOS<span class="dots"></span></p>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="bar-fill" class="bar-fill"></div>
+      </div>
+      <p id="bar-percent" class="loader-percent">0%</p>
+    </div>
+    <main id="terminal" class="terminal" hidden>
       <div id="output"></div>
       <form id="form" class="line" autocomplete="off">
-        <label for="input" class="prompt">visitante@web:~$</label>
+        <label for="input" class="prompt">visitante@sarahos:~$</label>
         <input id="input" type="text" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" autofocus>
       </form>
     </main>
